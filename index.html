@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Mesto</title>
+    <script type="module" crossorigin src="./assets/index-DJbPlCrZ.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-D2z4Cjqv.css">
+  </head>
+
+  <body class="page">
+    <div class="page__content">
+      <header class="header page__section">
+        <img
+          src="./assets/logo-C_QQpFK1.svg"
+          alt="Логотип Mesto"
+          class="logo header__logo"
+        />
+      </header>
+
+      <main class="content">
+        <section class="profile page__section">
+          <div class="profile__image"></div>
+
+          <div class="profile__info">
+            <h1 class="profile__title"></h1>
+
+            <button
+              class="profile__edit-button"
+              type="button"
+            ></button>
+
+            <p class="profile__description"></p>
+          </div>
+
+          <button
+            class="profile__add-button"
+            type="button"
+          ></button>
+        </section>
+
+        <section class="places page__section">
+          <ul class="places__list"></ul>
+        </section>
+      </main>
+
+      <footer class="footer page__section">
+        <p class="footer__copyright">© 2025 Mesto Russia</p>
+      </footer>
+    </div>
+
+    <!-- popup edit profile -->
+
+    <div class="popup popup_type_edit">
+      <div class="popup__content">
+        <button
+          type="button"
+          class="popup__close"
+        ></button>
+
+        <h3 class="popup__title">Редактировать профиль</h3>
+
+        <form
+          class="popup__form"
+          name="edit-profile"
+          novalidate
+        >
+          <input
+            type="text"
+            name="name"
+            class="popup__input popup__input_type_name"
+            placeholder="Имя"
+            required
+            minlength="2"
+            maxlength="40"
+          />
+
+          <span class="popup__error popup__error_type_name"></span>
+
+          <input
+            type="text"
+            name="description"
+            class="popup__input popup__input_type_description"
+            placeholder="Занятие"
+            required
+            minlength="2"
+            maxlength="200"
+          />
+
+          <span class="popup__error popup__error_type_description"></span>
+
+          <button
+            type="submit"
+            class="button popup__button"
+          >
+            Сохранить
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- popup new card -->
+
+    <div class="popup popup_type_new-card">
+      <div class="popup__content">
+        <button
+          type="button"
+          class="popup__close"
+        ></button>
+
+        <h3 class="popup__title">Новое место</h3>
+
+        <form
+          class="popup__form"
+          name="new-place"
+          novalidate
+        >
+          <input
+            type="text"
+            name="place-name"
+            class="popup__input popup__input_type_card-name"
+            placeholder="Название"
+            required
+            minlength="2"
+            maxlength="30"
+          />
+
+          <span class="popup__error popup__error_type_card-name"></span>
+
+          <input
+            type="url"
+            name="link"
+            class="popup__input popup__input_type_url"
+            placeholder="Ссылка на картинку"
+            required
+          />
+
+          <span class="popup__error popup__error_type_url"></span>
+
+          <button
+            type="submit"
+            class="button popup__button"
+          >
+            Создать
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- popup image -->
+
+    <div class="popup popup_type_image">
+      <div class="popup__content popup__content_content_image">
+        <button
+          type="button"
+          class="popup__close"
+        ></button>
+
+        <img
+          src=""
+          alt=""
+          class="popup__image"
+        />
+
+        <p class="popup__caption"></p>
+      </div>
+    </div>
+
+    <!-- popup avatar -->
+
+    <div class="popup popup_type_edit-avatar">
+      <div class="popup__content">
+        <button
+          type="button"
+          class="popup__close"
+        ></button>
+
+        <h3 class="popup__title">Обновить аватар</h3>
+
+        <form
+          class="popup__form"
+          name="edit-avatar"
+          novalidate
+        >
+          <input
+            type="url"
+            name="avatar"
+            class="popup__input popup__input_type_avatar"
+            placeholder="Ссылка на аватар"
+            required
+          />
+
+          <span class="popup__error popup__error_type_avatar"></span>
+
+          <button
+            type="submit"
+            class="button popup__button"
+          >
+            Сохранить
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- popup remove card -->
+
+    <div class="popup popup_type_remove-card">
+      <div class="popup__content">
+        <button
+          type="button"
+          class="popup__close"
+        ></button>
+
+        <h3 class="popup__title">Вы уверены?</h3>
+
+        <form
+          class="popup__form"
+          name="remove-card"
+          novalidate
+        >
+          <button
+            type="submit"
+            class="button popup__button"
+          >
+            Да
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- popup info -->
+
+    <div class="popup popup_type_info">
+      <div class="popup__content popup__content_content_info">
+        <button
+          type="button"
+          class="popup__close"
+        ></button>
+
+        <h3 class="popup__title"></h3>
+
+        <dl class="popup__info"></dl>
+
+        <h4 class="popup__text">
+          Пользователи, поставившие лайк
+        </h4>
+
+        <ul class="popup__list"></ul>
+      </div>
+    </div>
+
+    <!-- card template -->
+
+    <template id="card-template">
+      <li class="places__item">
+        <article class="card">
+          <div class="card__controls">
+            <button
+              type="button"
+              class="card__control-button card__control-button_type_info"
+            ></button>
+
+            <button
+              type="button"
+              class="card__control-button card__control-button_type_delete"
+            ></button>
+          </div>
+
+          <img
+            class="card__image"
+            src=""
+            alt=""
+          />
+
+          <div class="card__description">
+            <h2 class="card__title"></h2>
+
+            <div class="card__like-container">
+              <button
+                type="button"
+                class="card__like-button"
+              ></button>
+
+              <p class="card__like-count"></p>
+            </div>
+          </div>
+        </article>
+      </li>
+    </template>
+
+    <!-- info definition template -->
+
+    <template id="popup-info-definition-template">
+      <div class="popup__info-item">
+        <dt class="popup__info-term"></dt>
+
+        <dd class="popup__info-description"></dd>
+      </div>
+    </template>
+
+    <!-- info users template -->
+
+    <template id="popup-info-user-preview-template">
+      <li class="popup__list-item popup__list-item_type_badge"></li>
+    </template>
+
+  </body>
+</html>
